@@ -3,6 +3,9 @@ let s:assert = themis#helper('assert')
 
 function! s:suite.before_each()
   hi clear
+  let g:lightline = {}
+  call lightline#init()
+  call lightline#colorscheme()
 endfunction
 
 function! s:hi(name)
@@ -19,9 +22,6 @@ function! s:pattern(xs, ...) abort
 endfunction
 
 function! s:suite.highlight()
-  let g:lightline = {}
-  call lightline#init()
-  call lightline#colorscheme()
   let palette = lightline#palette()
   call s:assert.match(s:hi('LightLineLeft_normal_0'), s:pattern(palette.normal.left[0]))
   call s:assert.match(s:hi('LightLineLeft_normal_1'), s:pattern(palette.normal.left[1]))
@@ -34,9 +34,6 @@ function! s:suite.highlight()
 endfunction
 
 function! s:suite.insert()
-  let g:lightline = {}
-  call lightline#init()
-  call lightline#colorscheme()
   call lightline#highlight('insert')
   let palette = lightline#palette()
   call s:assert.match(s:hi('LightLineLeft_insert_0'), s:pattern(palette.insert.left[0]))
@@ -51,9 +48,6 @@ endfunction
 
 
 function! s:suite.visual()
-  let g:lightline = {}
-  call lightline#init()
-  call lightline#colorscheme()
   call lightline#highlight('visual')
   let palette = lightline#palette()
   call s:assert.match(s:hi('LightLineLeft_visual_0'), s:pattern(palette.visual.left[0]))
@@ -67,9 +61,6 @@ function! s:suite.visual()
 endfunction
 
 function! s:suite.replace()
-  let g:lightline = {}
-  call lightline#init()
-  call lightline#colorscheme()
   call lightline#highlight('replace')
   let palette = lightline#palette()
   call s:assert.match(s:hi('LightLineLeft_replace_0'), s:pattern(palette.replace.left[0]))
@@ -103,27 +94,6 @@ function! s:suite.left_right()
   call s:assert.match(s:hi('LightLineRight_normal_3'), s:pattern(palette.normal.middle[0]))
   call s:assert.match(s:hi('LightLineRight_normal_4'), s:pattern(palette.normal.middle[0]))
   call s:assert.match(s:hi('LightLineRight_normal_5'), 'E411: highlight group not found\|cleared')
-  call s:assert.match(s:hi('LightLineMiddle_normal'), s:pattern(palette.normal.middle[0]))
-endfunction
-
-function! s:suite.no_components()
-  let g:lightline = {
-        \   'active': {
-        \     'left': [],
-        \     'right': []
-        \   },
-        \   'inactive': {
-        \     'left': [],
-        \     'right': []
-        \   },
-        \ }
-  call lightline#init()
-  call lightline#colorscheme()
-  let palette = lightline#palette()
-  call s:assert.match(s:hi('LightLineLeft_normal_0'), s:pattern(palette.normal.left[0]))
-  call s:assert.match(s:hi('LightLineLeft_normal_1'), 'E411: highlight group not found\|cleared')
-  call s:assert.match(s:hi('LightLineRight_normal_0'), s:pattern(palette.normal.right[0]))
-  call s:assert.match(s:hi('LightLineRight_normal_1'), 'E411: highlight group not found\|cleared')
   call s:assert.match(s:hi('LightLineMiddle_normal'), s:pattern(palette.normal.middle[0]))
 endfunction
 

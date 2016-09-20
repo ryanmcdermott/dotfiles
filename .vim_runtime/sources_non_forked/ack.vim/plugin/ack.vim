@@ -1,4 +1,4 @@
-if exists('g:loaded_ack') || &cp
+if exists('g:loaded_ack')
   finish
 endif
 

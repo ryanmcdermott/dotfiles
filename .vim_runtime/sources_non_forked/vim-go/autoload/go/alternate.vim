@@ -28,5 +28,3 @@ function! go#alternate#Switch(bang, cmd)
     execute ":" . a:cmd . " " . alt_file
   endif
 endfunction
-
-" vim: sw=2 ts=2 et

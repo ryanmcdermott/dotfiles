@@ -520,8 +520,8 @@ Oops! We forgot the cool mark for the branch component! (work with the patched f
 ```vim
 function! LightLineFugitive()
   if exists("*fugitive#head")
-    let branch = fugitive#head()
-    return branch !=# '' ? '⭠ '.branch : ''
+    let _ = fugitive#head()
+    return _ !=# '' ? '⭠ '._ : ''
   endif
   return ''
 endfunction
@@ -596,8 +596,8 @@ endfunction
 
 function! LightLineFugitive()
   if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-    let branch = fugitive#head()
-    return branch !=# '' ? '⭠ '.branch : ''
+    let _ = fugitive#head()
+    return _ !=# '' ? '⭠ '._ : ''
   endif
   return ''
 endfunction
@@ -691,8 +691,8 @@ function! LightLineFugitive()
   try
     if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
       let mark = ''  " edit here for cool mark
-      let branch = fugitive#head()
-      return branch !=# '' ? mark.branch : ''
+      let _ = fugitive#head()
+      return _ !=# '' ? mark._ : ''
     endif
   catch
   endtry

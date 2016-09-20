@@ -1,3 +1,5 @@
+set expandtab
+
 """"""""""""""""""""""""""""""
 " => Python section
 """"""""""""""""""""""""""""""
@@ -22,9 +24,15 @@ au FileType python map <buffer> <leader>D ?def
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-au FileType javascript call JavaScriptFold()
+au FileType javascript set tabstop=2
+au FileType javascript set shiftwidth=2
 au FileType javascript setl fen
 au FileType javascript setl nocindent
+
+au FileType typescript set tabstop=2
+au FileType typescript set shiftwidth=2
+au FileType typescript setl fen
+au FileType typescript setl nocindent
 
 au FileType javascript imap <c-t> $log();<esc>hi
 au FileType javascript imap <c-a> alert();<esc>hi
